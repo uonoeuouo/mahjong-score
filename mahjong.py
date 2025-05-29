@@ -1,10 +1,17 @@
 from PIL import Image
 from google.cloud import vision
+from dotenv import load_dotenv
 import io
-
-# サービスアカウントキーのパスを指定
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "mahjong-score-461302-205f61b0439b.json"
+
+load_dotenv()
+credential_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+
+if credential_path:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
+else:
+    raise Exception("GOOGLE_APPLICATION_CREDENTIALS is not set.")
+
 
 # クライアントを作成
 client = vision.ImageAnnotatorClient()

@@ -1,2 +1,2 @@
-# Google Cloud credentials
-*.json
+.env
+mahjong-score-*.json
