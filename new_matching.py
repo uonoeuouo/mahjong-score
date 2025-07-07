@@ -79,6 +79,13 @@ if top_match:
     cv2.putText(input_color, f"Top1 (scale={top_match['scale']:.2f})", (x, y - 5),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
+    # マッチ結果を画像として保存
+    cv2.imwrite('match_result.png', input_color)
+
+    # 矩形部分をトリミングして別の変数に保存
+    cropped_match = input_color[y:y+h, x:x+w]
+    cv2.imwrite('cropped_match.png', cropped_match)
+
 # 可視化
 plt.figure(figsize=(18, 6))
 
