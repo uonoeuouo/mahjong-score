@@ -1,2 +1,3 @@
 .env
 mahjong-score-*.json
+__pycache__
