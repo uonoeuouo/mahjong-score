@@ -8,6 +8,8 @@ import random
 
 if __name__ == "__main__":
 
+    TARGET_CHANNEL_ID = 1394479616806096919
+
     intents = discord.Intents.all()
     client = discord.Client(intents=intents)
 
@@ -23,8 +25,8 @@ if __name__ == "__main__":
         if message.author == client.user:
             return
 
-        # 画像が添付されている場合
-        if message.attachments:
+        # 画像が添付されているかつ特定のチャンネルの場合
+        if message.attachments and message.channel.id == TARGET_CHANNEL_ID:
             for attachment in message.attachments:
                 if attachment.filename.endswith(('.png', '.jpg', '.jpeg')):
                     
