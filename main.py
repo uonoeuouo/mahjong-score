@@ -8,7 +8,7 @@ import random
 
 if __name__ == "__main__":
 
-    TARGET_CHANNEL_ID = 1394479616806096919
+    TARGET_CHANNEL_ID = config.TARGET_CHANNEL_ID
 
     intents = discord.Intents.all()
     client = discord.Client(intents=intents)
