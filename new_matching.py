@@ -46,7 +46,8 @@ def multi_scale_match(input_bin, template_bin, scales=np.linspace(0.8, 1.2, 20))
 def process_images(input_image_path, template_image_path):
     # 入力とテンプレート画像の読み込み
     template_gray = cv2.imread(template_image_path, cv2.IMREAD_GRAYSCALE)
-    input_gray = cv2.imread(input_image_path, cv2.IMREAD_GRAYSCALE)
+    image_array = np.frombuffer(input_image_path.read(), dtype=np.uint8)
+    input_gray = cv2.imdecode(image_array, cv2.IMREAD_GRAYSCALE)
     input_color = cv2.cvtColor(input_gray, cv2.COLOR_GRAY2BGR)
 
     # テンプレート画像の高さを入力画像の80%にリサイズ
