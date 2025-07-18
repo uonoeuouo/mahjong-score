@@ -86,32 +86,5 @@ def process_images(input_image_path, template_image_path):
         cropped_match = input_color[y:y+h, x:x+w]
         cv2.imwrite('cropped_match.png', cropped_match)
 
-    return input_color, template_bin, input_bin, cropped_match
 
-if __name__ == "__main__":
-    input_image_path = 'score2.png'
-    template_image_path = 'temp3.png'
 
-    # 関数を呼び出して処理を実行
-    input_color, template_bin, input_bin, cropped_match = process_images(input_image_path, template_image_path)
-
-    # # 可視化
-    # plt.figure(figsize=(18, 6))
-
-    # plt.subplot(1, 3, 1)
-    # plt.imshow(template_bin, cmap='gray')
-    # plt.title('Template Mask (Blurred)')
-    # plt.axis('off')
-
-    # plt.subplot(1, 3, 2)
-    # plt.imshow(input_bin, cmap='gray')
-    # plt.title('Input Mask (Blurred)')
-    # plt.axis('off')
-
-    # plt.subplot(1, 3, 3)
-    # plt.imshow(cv2.cvtColor(input_color, cv2.COLOR_BGR2RGB))
-    # plt.title('Match Result')
-    # plt.axis('off')
-
-    # plt.tight_layout()
-    # plt.show()

@@ -38,7 +38,7 @@ if __name__ == "__main__":
                     input_image_path = io.BytesIO(image_url) 
                     template_image_path = 'temp3.png'
                     
-                    input_color, template_bin, input_bin, cropped_match = process_images(input_image_path, template_image_path)
+                    process_images(input_image_path, template_image_path)
                     
                     # 文字列抽出の実行
                     pick_strings()
