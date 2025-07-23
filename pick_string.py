@@ -1,6 +1,8 @@
 from PIL import Image
 from google.cloud import vision
 from dotenv import load_dotenv
+import config
+import discord
 import io
 import os
 import numpy as np
@@ -8,7 +10,7 @@ import cv2
 
 def pick_strings():
     load_dotenv()
-    credential_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    credential_path = config.GOOGLE_APPLICATION_CREDENTIALS
 
     if credential_path:
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
