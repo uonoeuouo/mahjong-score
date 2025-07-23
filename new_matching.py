@@ -43,7 +43,7 @@ def multi_scale_match(input_bin, template_bin, scales=np.linspace(0.8, 1.2, 20))
         return None
     return max(results, key=lambda r: r['score'])
 
-def process_images(input_image_path, template_image_path):
+def crop_region(input_image_path, template_image_path):
     # 入力とテンプレート画像の読み込み
     template_gray = cv2.imread(template_image_path, cv2.IMREAD_GRAYSCALE)
     image_array = np.frombuffer(input_image_path.read(), dtype=np.uint8)

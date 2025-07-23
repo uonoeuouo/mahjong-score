@@ -1,4 +1,4 @@
-from new_matching import process_images
+from new_matching import crop_region
 from pick_string import pick_strings
 
 import io
@@ -37,7 +37,7 @@ def run_discord_bot():
                     input_image_path = io.BytesIO(image_url) 
                     template_image_path = 'temp3.png'
                     
-                    process_images(input_image_path, template_image_path)
+                    crop_region(input_image_path, template_image_path)
                     
                     # 文字列抽出の実行
                     pick_strings()
