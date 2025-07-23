@@ -37,10 +37,10 @@ def run_discord_bot():
                     input_image_path = io.BytesIO(image_url) 
                     template_image_path = 'temp3.png'
                     
-                    crop_region(input_image_path, template_image_path)
+                    cropped = crop_region(input_image_path, template_image_path)
                     
                     # 文字列抽出の実行
-                    pick_strings()
+                    pick_strings(cropped)
 
     # Bot起動
     client.run(config.DISCORD_TOKEN)

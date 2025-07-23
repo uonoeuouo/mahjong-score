@@ -82,9 +82,9 @@ def crop_region(input_image_path, template_image_path):
         cv2.putText(input_color, f"Top1 (scale={top_match['scale']:.2f})", (x, y - 5),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
-        # 矩形部分をトリミングして別の変数に保存
+        # 矩形部分をトリミングして返却
         cropped_match = input_color[y:y+h, x:x+w]
-        cv2.imwrite('cropped_match.png', cropped_match)
+    return cropped_match
 
 
 
