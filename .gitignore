@@ -1,2 +1,6 @@
 .env
 mahjong-score-*.json
+__pycache__
+tempCodeRunnerFile.py
+logs/
+crypto-plexus-*.json
