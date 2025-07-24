@@ -1,14 +1,16 @@
 from PIL import Image
 from google.cloud import vision
 from dotenv import load_dotenv
+import config
+import discord
 import io
 import os
 import numpy as np
 import cv2
 
-def pick_strings():
+def pick_strings(img_np=None):
     load_dotenv()
-    credential_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    credential_path = config.GOOGLE_APPLICATION_CREDENTIALS
 
     if credential_path:
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
@@ -20,7 +22,12 @@ def pick_strings():
     client = vision.ImageAnnotatorClient()
 
     # 画像を開く
-    img = Image.open("cropped_match.png")
+    if img_np is None:
+        print("No image provided, using default image.")
+        return None
+    else:
+        # numpy配列からPIL Imageへ
+        img = Image.fromarray(cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB))
     width, height = img.size
 
     # 相対座標で定義
@@ -77,10 +84,3 @@ def pick_strings():
         )
         cv2.rectangle(draw_img, (box[0], box[1]), (box[2], box[3]), (255, 0, 0), 2)
         cv2.putText(draw_img, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
-
-    # 描画結果を保存
-    cv2.imwrite("regions_output.png", draw_img)
-
-
-if __name__ == "__main__":
-    pick_strings()
